@@ -1,0 +1,56 @@
+services:
+  qwik-app:
+    container_name: qwik_container
+    build:
+      context: ./qwik-app
+    depends_on:
+      - neo4j
+
+  rocket-api:
+    container_name: rocket_container
+    build:
+      context: ./rocket-api
+    depends_on:
+      - postgres
+
+  nginx-proxy:
+    container_name: nginx_container
+    build:
+      context: ./nginx-proxy
+      args:
+        DOMAIN: localhost
+    depends_on:
+      - qwik-app
+    ports:
+      - "8080:80"
+  
+  neo4j:
+    image: neo4j:latest
+    container_name: neo4j_container
+    environment:
+      NEO4J_AUTH: neo4j/password
+    volumes:
+      - ./neo4j/data:/data # Mounting the data directory
+      - ./neo4j/conf:/conf # Optional: Mounting configuration directory
+    depends_on:
+      - postgres
+    ports:
+      - "7687:7687"
+
+  postgres:
+    container_name: postgres_container
+    build:
+      context: ./postgres
+    restart: always
+    environment:
+      POSTGRES_DB: usersdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+# Delete all data
+# docker stop `docker ps -qa`
+# docker system prune --volumes --all

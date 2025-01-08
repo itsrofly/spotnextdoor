@@ -1,0 +1,226 @@
+/* Defining components area */
+.header {
+  grid-area: header;
+}
+
+.left {
+  grid-area: left;
+}
+
+.main {
+  grid-area: main;
+}
+
+.right {
+  grid-area: right;
+}
+
+.left-options {
+  grid-area: options;
+}
+
+.left-component {
+  grid-area: component;
+}
+
+.left-blocks {
+  grid-area: blocks;
+}
+
+.compc {
+  grid-area: compc;
+}
+
+.namec {
+  grid-area: namec;
+}
+
+.movec {
+  grid-area: movec;
+}
+
+#out {
+  grid-area: out;
+  min-height: 100px;
+}
+
+#pages {
+  grid-area: pages;
+}
+
+/* Creating Editor Page Layout */
+.grid-layout {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'left main main main main right';
+  grid-template-columns: 220px 50px auto auto 50px 220px;
+  grid-template-rows: 64px auto;
+  gap: 0;
+}
+
+
+/* Left Layout*/
+.grid-left {
+  display: grid;
+  grid-template-areas:
+    'options'
+    'component';
+  grid-template-rows: 50px auto;
+  gap: 1px;
+}
+
+/* Left Component */
+.grid-left-component {
+  display: grid;
+  grid-template-areas:
+    'blocks';
+  grid-template-rows: auto;
+  gap: 1px;
+}
+
+/* Components */
+.grid-component {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  grid-gap: 25px;
+}
+
+.grid-page {
+  display: grid;
+  grid-template-areas:
+    'pages'
+    'out';
+  grid-template-rows: auto 1fr;
+}
+
+.grid-page-component {
+  display: grid;
+  grid-template-areas:
+    'namec movec';
+  /* compc namec movec */
+  grid-template-columns: auto 14px;
+  /* 14px auto 14px */
+}
+
+/* Itens */
+.grid-item svg {
+  /* Change Blocks SVG and Label */
+  margin: 5px;
+  width: 32px;
+  height: 32px;
+}
+
+.grid-item label {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+
+/* Style the scrollbar */
+#custom-scroll-container::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+/* Track */
+#custom-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+#custom-scroll-container::-webkit-scrollbar-thumb {
+  background: #00c8ff;
+}
+
+/* Handle on hover */
+#custom-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: gray;
+}
+
+#scroll-invisible::after {
+  scrollbar-width: none;
+  /* Hide the scrollbar in Firefox */
+  -ms-overflow-style: none;
+  /* Hide the scrollbar in Internet Explorer and Edge */
+}
+
+
+#scroll-invisible::after::-webkit-scrollbar {
+  display: none;
+  /* Hide the scrollbar in Chrome, Safari, and Opera */
+}
+
+
+.btn.active .component-svg.adap {
+  filter: invert(61%) sepia(44%) saturate(3974%) hue-rotate(158deg) brightness(104%) contrast(109%);
+}
+
+.grid-item:hover .component-txt.adap {
+  color: #008cff !important;
+}
+
+
+@media (max-width: 1366px) {
+  .grid-container {
+    display: grid;
+    /* Create grid */
+    grid-template-columns: repeat(1, 1fr);
+    /* Creato two columns and auto fill them */
+    grid-auto-rows: 1fr;
+    grid-gap: 10px;
+    /* Adjust gap between items as needed */
+  }
+
+  .grid-layout {
+    display: grid;
+    grid-template-areas:
+      'header header header header header header'
+      'left main main main main right';
+    grid-template-columns: 165px auto auto auto 50px 165px;
+    grid-template-rows: 64px auto;
+    gap: 0;
+  }
+
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gjs-primary-color: #181a1b;
+    --gjs-secondary-color: #ffffff;
+    --gjs-secondary-dark-color: #181a1b;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --gjs-primary-color: #ffffff;
+    --gjs-secondary-color: #181a1b;
+    --gjs-secondary-dark-color: #ffffff;
+  }
+}
+
+/* Reset some default styling of canvas */
+.gjs-cv-canvas {
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.gjs-editor-cont {
+  height: 100% !important;
+}
+
+:root {
+  --gjs-tertiary-color: #00c8ff;
+  --gjs-quaternary-color: #00c8ff;
+  --gjs-main-light-color: #00c8ff;
+}
+
+.gjs-two-color {
+  font-family: Arial;
+}
+
