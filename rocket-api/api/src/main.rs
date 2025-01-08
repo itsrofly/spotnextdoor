@@ -7,6 +7,4 @@ mod users;
 fn rocket() -> _ {
     rocket::build()
         .attach(users::stage())
-
-        
 }
